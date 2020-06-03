@@ -1,60 +1,72 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
+    <v-navigation-drawer v-model="drawer" color="primary" app dark>
+         <v-list dense class="text-left">
+            <!-- MENU -->
+            <router-link to="/">
+              <v-list-item link>
+                <v-list-item-action>
+                  <v-icon>mdi-home</v-icon>
+                </v-list-item-action>
+                <v-list-item-content>
+                  <v-list-item-title>
+                    Menu
+                  </v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </router-link>
 
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
+            <router-link to="/calculatrice">
+              <v-list-item link>
+                <v-list-item-action>
+                  <v-icon>mdi-calculator</v-icon>
+                </v-list-item-action>
+                <v-list-item-content>
+                  <v-list-item-title>
+                    Calculatrice
+                  </v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </router-link>
+          </v-list>
+        </v-navigation-drawer>
 
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
+        <v-app-bar
+        app
+        color="deep-purple accent-4"
+        dark
       >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
+        <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+          <v-spacer></v-spacer>
+        <v-toolbar-title>Nivantis</v-toolbar-title>  
+        <v-spacer></v-spacer>
+      </v-app-bar>
 
-    <v-content>
-      <HelloWorld/>
-    </v-content>
+              <v-content id="content">
+          <v-col class="text-center no-padding">
+            <!-- Affichage des page -->
+            <router-view/>
+          </v-col>
+        </v-content>
+
+
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
 
 export default {
   name: 'App',
 
-  components: {
-    HelloWorld,
-  },
-
   data: () => ({
-    //
+    drawer: false
   }),
+watch: {
+    group () {
+      this.drawer = false
+    },
+}
+
+
 };
 </script>
