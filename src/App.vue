@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-navigation-drawer v-model="drawer" color="primary" app dark>
+    <v-navigation-drawer v-model="drawer" color="white" app>
          <v-list dense class="text-left">
             <!-- MENU -->
             <router-link to="/">
@@ -33,7 +33,7 @@
 
         <v-app-bar
         app
-        color="deep-purple accent-4"
+        color="#828282"
         dark
       >
         <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>

@@ -1,8 +1,8 @@
 <template>
   <div class="home">
-      <h1 class="display-2 font-weight-bold mb-3">
+      <p class="title">
           Bienvenue dans Nivantis
-        </h1>
+        </p>
   </div>
 </template>
 
