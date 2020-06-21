@@ -1,5 +1,7 @@
 module.exports = {
-  "transpileDependencies": [
-    "vuetify"
-  ]
+    outputDir: '../nivantisCordova/www',
+    publicPath: './',
+    "transpileDependencies": [
+        "vuetify"
+    ]
 }

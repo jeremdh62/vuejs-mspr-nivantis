@@ -1,5 +1,5 @@
 <template>
-  <div class="calculatrice">
+  <div class="calculatriceview">
     <CalculatriceComponent/>
   </div>
 </template>
@@ -9,7 +9,7 @@
 import CalculatriceComponent from '../components/CalculatriceComponent.vue'
 
 export default {
-  name: 'Calculatrice',
+  name: 'CalculatriceView',
   components: {
     CalculatriceComponent
   }

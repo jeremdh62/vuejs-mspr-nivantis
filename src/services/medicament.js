@@ -1,8 +1,9 @@
 export class Medicament {
-
-    constructor(nom, prix) {
-        this.nom = nom;
-        this.prix = prix;
+    id = 0;
+    constructor(nom, prixBrut) {
+        this.id++
+            this.nom = nom;
+        this.prixBrut = prixBrut;
     }
 }
 
