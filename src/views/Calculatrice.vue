@@ -1,5 +1,6 @@
 <template>
   <div class="calculatriceview">
+    <p class="title"> Calculs de remises commerciales </p>
     <CalculatriceComponent/>
   </div>
 </template>
