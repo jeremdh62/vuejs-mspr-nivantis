@@ -3,8 +3,16 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify';
-import "./plugins/vue2-leaflet";
-import "./plugins/firebase";
+import { firestorePlugin } from 'vuefire'
+import * as VueGoogleMaps from 'vue2-google-maps'
+
+Vue.use(VueGoogleMaps, {
+    load: {
+        key: 'AIzaSyAPi_IbzFZ34FY2XBKw7sOXNqKhMzp8u_o',
+        libraries: 'places',
+    }
+})
+Vue.use(firestorePlugin)
 
 Vue.config.productionTip = false
 

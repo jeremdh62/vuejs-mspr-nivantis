@@ -1,6 +1,7 @@
 <template>
   <div class="pharmacie">
-     <pharmacie-map></pharmacie-map>
+    <p class="title"> Pharmacies </p>
+     <pharmacieMap></pharmacieMap>
   </div>
 </template>
 
