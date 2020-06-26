@@ -1,7 +1,6 @@
 <template>
   <div> 
-    <p> laPharmacie : {{ pharmacie }} </p>
-   <!-- <div v-for="laPharmacie in pharmacie" :key="pharmacie.indexOf(laPharmacie)">
+    <div v-for="laPharmacie in pharmacie" :key="pharmacie.indexOf(laPharmacie)">
     <p> nom : {{ laPharmacie.nom}} </p>
        </div>
 
@@ -9,13 +8,13 @@
 <div v-for="laPharmacie in pharmacie" :key="pharmacie.indexOf(laPharmacie)">
   <gmap-marker :position="{lat: laPharmacie.latlng.Rc ,lng: laPharmacie.latlng.Ac }">
 
-  </gmap-marker>-->
+  </gmap-marker>
      <!-- <gmap-info-window :position="{lat: laPharmacie.latlng.Rc ,lng: laPharmacie.latlng.Ac }"> 
         {{laPharmacie.nom}} 
-        </gmap-info-window>
+        </gmap-info-window>-->
 
 </div>
-</GmapMap>-->
+</GmapMap>
 
   </div>
 </template>
@@ -34,22 +33,28 @@
   methods: {},
 
   created() {
+    
+    //db.enablePersistence()
 
     db.collection('pharmacie').get().then(snapshot => {
         snapshot.forEach(doc => {
           
-          this.pharmacie.push(doc.data())
-      
-           //console.log('firebase',this.pharmacie)
-           /* console.log('local',JSON.parse(localStorage.getItem('pharmacieLocal')))
-            localStorage.setItem('pharmacieLocal', JSON.stringify(this.pharmacie))
-            this.pharmacie.push(JSON.parse(localStorage.getItem('pharmacieLocal')))*/
-          
-        });
+          this.pharmacie.push(doc.data())          
+        });     
     })
     
     
-
+    /*db.collection("pharmacie").onSnapshot({ includeMetadataChanges: true }, function(snapshot) {
+      snapshot.docChanges().forEach(function(change) {
+          if (change.type === "added") {
+              change.doc.data();
+          }
+          
+          // eslint-disable-next-line no-unused-vars
+          var source = snapshot.metadata.fromCache ? "local cache" : "server";
+          //console.log("Data came from " + source);
+      });
+  });*/
   }
 
  
