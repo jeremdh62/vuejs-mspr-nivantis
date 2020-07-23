@@ -1,6 +1,6 @@
 <template>
   <div>
-      <v-select v-model="select" :items="medicaments" item-text="nom" item-value="id" dense outlined label="Médicament" return-object></v-select>
+      <v-select v-model="select" :items="PersistanceMedicaments(medicaments)" item-text="nom" item-value="id" dense outlined label="Médicament" return-object></v-select>
       <v-text-field v-model="remise" label="Remise" type="number" suffix="%"></v-text-field>
       <v-text-field v-model="coefMulti" label="Coefficient Multiplicateur" type="number"></v-text-field>
       <p class="body-1"> Prix d'achat net : {{calcul.PrixAchatNet(`${select.prixBrut}`, remise ) }} €</p>
@@ -22,6 +22,17 @@
      calcul: new Calculatrice()
     }),
 
+    methods: {
+        PersistanceMedicaments(persistMedicaments){
+          if (persistMedicaments.length == 0){
+            return this.medicamentsLocal;
+          }
+          else{
+            return persistMedicaments
+          }
+        }  
+    },
+
  created() {
     
    db.collection('medicaments').get().then(snapshot => {
@@ -29,8 +40,7 @@
          // console.log("data")
           this.medicaments.push(doc.data())          
         });
-        
-        //localStorage.setItem('MedicamentsLocal', JSON.stringify(this.medicaments))
+        localStorage.setItem('MedicamentsLocal', JSON.stringify(this.medicaments))
         
            // this.medicaments = JSON.parse(localStorage.getItem('MedicamentsLocal')).splice()
            })
